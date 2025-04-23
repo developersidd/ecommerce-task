@@ -1,5 +1,5 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { setupListeners } from '@reduxjs/toolkit/query';
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/query";
 import {
   FLUSH,
   PAUSE,
@@ -8,35 +8,34 @@ import {
   REGISTER,
   REHYDRATE,
   persistReducer,
-} from 'redux-persist';
+} from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-import cartReducer from '../../redux/features/cart/cartSlice';
-import { apiSlice } from '../features/api/apiSlice';
-import productReducer from '../features/product/productSlice';
+import cartReducer from "../../redux/features/cart/cartSlice";
+import productReducer from "../features/product/productSlice";
 
 const persistConfig = {
-  key: 'root',
+  key: "root",
   storage: storage,
-  blacklist: ['api'],
-}
+  blacklist: ["api"],
+};
 
 export const rootReducers = combineReducers({
-  api: apiSlice.reducer,
   product: productReducer,
   cart: cartReducer,
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducers)
+const persistedReducer = persistReducer(persistConfig, rootReducers);
 
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware: (gDM) => gDM({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }).concat(apiSlice.middleware),
-  devTools: process.env.NODE_ENV !== 'production'
+  middleware: (gDM) =>
+    gDM({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }).concat([]),
+  devTools: process.env.NODE_ENV !== "production",
 });
 
 setupListeners(store.dispatch);
