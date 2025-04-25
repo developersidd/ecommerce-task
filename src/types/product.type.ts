@@ -14,16 +14,6 @@ interface IProduct {
     id: number;
     name: string;
   };
-  product_images: [
-    {
-      id: number;
-      name: string;
-      pivot: {
-        product_id: number;
-        image_id: number;
-      };
-    }
-  ];
   created_at: string;
   updated_at: string;
 }

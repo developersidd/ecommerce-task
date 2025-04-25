@@ -3,16 +3,21 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface IInitCartState {
   bookedProducts: IBookedProduct[];
+  isSidebarOpen: boolean;
 }
 
 const initialState: IInitCartState = {
   bookedProducts: [],
+  isSidebarOpen: false,
 };
 
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    toggleCartSidebar: (state) => {
+      state.isSidebarOpen = !state.isSidebarOpen;
+    },
     editCartProductQuantity: (
       state: IInitCartState,
       {
@@ -69,6 +74,7 @@ export const {
   clearCartProducts,
   removeProductFromCart,
   editCartProductQuantity,
+  toggleCartSidebar,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

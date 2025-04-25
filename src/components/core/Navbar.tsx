@@ -1,11 +1,14 @@
 "use client";
-import { useAppSelector } from "@/redux/app/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
 import { selectCart } from "@/redux/features/cart/cartSelector";
+import { toggleCartSidebar } from "@/redux/features/cart/cartSlice";
 import { selectProduct } from "@/redux/features/product/productSelector";
 import { Heart, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 
 const Navbar = () => {
+  const dispatch = useAppDispatch();
+
   const { bookedProducts } = useAppSelector(selectCart);
   const { whichListProductsId } = useAppSelector(selectProduct);
 
@@ -14,7 +17,7 @@ const Navbar = () => {
       <div className="flex items-center h-16 md:h-[75px]  justify-between px-4 md:px-5 lg:px-10 ">
         <div className="">
           <Link href="/" className="md:text-2xl lg:text-3xl text-xl font-bold">
-            <span className="text-blue-600">
+            <span className="text-indigo-600">
               <ShoppingCart className="inline-block -mt-2" size={35} />
               ABMart
             </span>
@@ -33,16 +36,21 @@ const Navbar = () => {
               Cart{" "}
             </Link>
 
-            <Link href="/cart" className={` relative  mr-5 `}>
+            <button
+              onClick={() => {
+                dispatch(toggleCartSidebar());
+              }}
+              className={`cursor-pointer relative  mr-5 `}
+            >
               <ShoppingCart className="h-6 w-6" />
-              <span className="bg-blue-600 text-gray-200 w-5 h-5 flex items-center justify-center rounded-full text-xs absolute -right-3 bottom-3 font-bold">
+              <span className="bg-indigo-600 text-gray-200 w-5 h-5 flex items-center justify-center rounded-full text-xs absolute -right-3 bottom-3 font-bold">
                 {bookedProducts.length}
               </span>
-            </Link>
+            </button>
 
             <Link href="/whichlist" className={` relative  mr-5 md:mr-0 `}>
               <Heart className="h-6 w-6" />
-              <span className="bg-blue-600 text-gray-200 w-5 h-5 flex items-center justify-center rounded-full text-xs absolute -right-3 bottom-3 font-bold">
+              <span className="bg-indigo-600 text-gray-200 w-5 h-5 flex items-center justify-center rounded-full text-xs absolute -right-3 bottom-3 font-bold">
                 {whichListProductsId.length}
               </span>
             </Link>

@@ -1,9 +1,8 @@
-import { GetProducts } from "@/api/products.api";
-import { IProduct } from "@/types/product.type";
-import Product from "./_components/Product";
+import { getProducts } from "@/api/products.api";
+import Products from "@/components/custom/product/Products";
 
 const ShopPage = async () => {
-  const { data, error } = await GetProducts();
+  const { data, error } = await getProducts();
   const products = data?.data || [];
   // Decide what to render
   let content;
@@ -12,16 +11,13 @@ const ShopPage = async () => {
   } else if (error) {
     content = <div className="text-center">{error}</div>;
   } else {
-    content = (
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
-        {products.map((pd: IProduct) => (
-          <Product key={pd.id} product={pd} />
-        ))}
-      </div>
-    );
+    content = <Products products={products} />;
   }
-
-  return content;
+  return (
+    <section className="lg:container mx-auto py-10 px-3 sm:px-5">
+      {content}
+    </section>
+  );
 };
 
 export default ShopPage;
