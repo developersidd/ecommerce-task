@@ -39,10 +39,10 @@ const CartItem: FC<CartItemProps> = ({ item }) => {
 
   return (
     <div className="flex items-center justify-between py-4 border-b-1 border-gray-300">
-      <div className="flex items-center gap-4">
-        <img src={image} alt={name} className="w-[100px] h-16 rounded-md " />
+      <div className="flex items-center gap-3 sm:gap-4">
+        <img src={image} alt={name} className="w-[80px]  md:w-[100px] h-[60px] md:h-[70px] rounded-md " />
         <div>
-          <h3 className="font-semibold">{name}</h3>
+          <h3 className="font-semibold max-sm:text-sm ">{name}</h3>
           <p className="text-gray-600">&#2547;{price.toFixed(2)}</p>
         </div>
       </div>

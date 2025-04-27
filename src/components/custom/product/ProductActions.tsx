@@ -47,7 +47,6 @@ const ProductActions = ({ product }: ProductActionsProps) => {
       })
     );
     toast.success(`${name} added to cart`);
-    dispatch(toggleCartSidebar());
   };
 
   return (
