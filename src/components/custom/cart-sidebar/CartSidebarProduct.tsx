@@ -1,17 +1,20 @@
 import { useAppDispatch } from "@/redux/app/hooks";
 import { removeProductFromCart } from "@/redux/features/cart/cartSlice";
-import { IBookedProduct } from "@/types/cart.type";
+import { ICartProduct } from "@/types/cart.type";
+import Image from "next/image";
 
 type CartSidebarProductProps = {
-  product: IBookedProduct;
+  product: ICartProduct;
 };
 const CartSidebarProduct = ({ product }: CartSidebarProductProps) => {
   const dispatch = useAppDispatch();
-  const { id, name, image, price, stock, quantity, category } = product || {};
+  const { id, name, image, price, quantity, category } = product || {};
   return (
     <li key={id} className="flex py-6">
       <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-        <img
+        <Image
+          width={100}
+          height={100}
           src={image}
           alt={name}
           className="h-full w-full object-cover object-center"
@@ -22,8 +25,10 @@ const CartSidebarProduct = ({ product }: CartSidebarProductProps) => {
         <div>
           <div className="flex justify-between text-base font-medium text-gray-900">
             <h3>{name}</h3>
-            <p className="ml-4">&#2547;
-            {price}</p>
+            <p className="ml-4">
+              &#2547;
+              {price}
+            </p>
           </div>
           <p className="mt-1 text-sm text-gray-500">{category}</p>
         </div>

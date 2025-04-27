@@ -1,7 +1,7 @@
 "use client";
 import getProductImage from "@/lib/getProductImage";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
-import { addToCart, toggleCartSidebar } from "@/redux/features/cart/cartSlice";
+import { addToCart } from "@/redux/features/cart/cartSlice";
 import { selectProduct } from "@/redux/features/product/productSelector";
 import {
   addToWishlist,

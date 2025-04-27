@@ -1,12 +1,13 @@
 "use client";
-import { Autoplay, EffectFlip, Navigation, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { ShoppingCart } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import "swiper/css";
 import "swiper/css/effect-flip";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { Autoplay, EffectFlip, Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import data from "../../data/Slider";
 import "./Slider.css";
 
@@ -42,7 +43,13 @@ const Slider = () => {
             >
               <div className="h-full flex flex-col md:flex-row items-center justify-center md:justify-between  px-7 gap-12">
                 <div className="w-full md:w-1/2 flex items-start justify-center">
-                  <img className="" src={item.img} alt="" />
+                  <Image
+                    width={1100}
+                    height={700}
+                    className=""
+                    src={item.img}
+                    alt=""
+                  />
                 </div>
 
                 <div className="w-full md:w-1/2  flex max-md:items-center justify-center flex-col md:h-full  text-center md:text-left">

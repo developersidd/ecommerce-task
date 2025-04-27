@@ -7,9 +7,9 @@ const getProducts = async () => {
     return {
       data: response.data?.data,
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     return {
-      error: error.response?.data?.message || "Something went wrong",
+      error: error || "Something went wrong",
     };
   }
 };
@@ -18,7 +18,7 @@ const getProducts = async () => {
 const getProductById = async (id: number) => {
   try {
     const { data, error } = await getProducts();
-    console.log(" data:", data)
+    console.log(" data:", data);
     if (error) {
       return { error };
     }
@@ -26,9 +26,9 @@ const getProductById = async (id: number) => {
       (product: IProduct) => product.id === id
     );
     return { data: product };
-  } catch (error: any) {
+  } catch (error: unknown) {
     return {
-      error: error.response?.data?.message || "Something went wrong",
+      error: error || "Something went wrong",
     };
   }
 };

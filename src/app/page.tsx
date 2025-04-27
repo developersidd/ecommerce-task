@@ -4,10 +4,19 @@ import ProductsSection from "./_components/ProductsSection";
 
 const Home = async () => {
   const { data, error } = await getProducts();
+  console.log(" error:", error)
   return (
     <main>
       <BannerSlider />
-      <ProductsSection products={data?.data} />
+      {error ? (
+        <div className="flex items-center justify-center h-screen">
+          <h2 className="text-2xl font-semibold text-red-500">
+            Something went wrong!
+          </h2>
+        </div>
+      ) : (
+        <ProductsSection products={data?.data} />
+      )}
     </main>
   );
 };

@@ -48,7 +48,7 @@ const Navbar = () => {
               </span>
             </button>
 
-            <Link href="/Wishlist" className={` relative  mr-5 md:mr-0 `}>
+            <Link href="/wishlist" className={` relative  mr-5 md:mr-0 `}>
               <Heart className="h-6 w-6" />
               <span className="bg-indigo-600 text-gray-200 w-5 h-5 flex items-center justify-center rounded-full text-xs absolute -right-3 bottom-3 font-bold">
                 {WishlistProductsId.length}

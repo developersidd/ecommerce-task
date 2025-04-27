@@ -66,7 +66,8 @@ const OrderForm = ({ ref, calcultions }: OrderFormProps) => {
         dispatch(clearCartProducts());
         router.push("/");
       }
-    } catch (e: any) {
+    } catch (e: unknown) {
+      console.log(" e:", e);
       toast.error("There was an error occurred!");
     }
   };

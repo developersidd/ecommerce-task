@@ -1,5 +1,6 @@
 import getProductImage from "@/lib/getProductImage";
 import { IProduct } from "@/types/product.type";
+import Image from "next/image";
 import ProductActions from "./ProductActions";
 
 type ProductProps = {
@@ -9,7 +10,6 @@ const Product = ({ product }: ProductProps) => {
   console.log(" product:", product);
   const {
     name,
-    id,
     discount_amount,
     price,
     image,
@@ -18,7 +18,13 @@ const Product = ({ product }: ProductProps) => {
   const pdImg = getProductImage(image);
   return (
     <div className="group border border-gray-200 rounded-lg  p-3 relative">
-      <img src={pdImg} alt={name} className="w-full h-[300px] rounded-t-lg" />
+      <Image
+        width={1000}
+        height={800}
+        src={pdImg}
+        alt={name}
+        className="w-full h-[300px] rounded-t-lg"
+      />
       <div className="p-4">
         <p className="text-gray-500 font-semibold">{categoryName}</p>
         <h2 className="text-xl font-semibold">{name}</h2>

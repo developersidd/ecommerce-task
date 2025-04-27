@@ -5,6 +5,7 @@ import {
 } from "@/redux/features/cart/cartSlice";
 import { ICartProduct } from "@/types/cart.type";
 import { Minus, Plus, Trash } from "lucide-react";
+import Image from "next/image";
 import { FC, useState } from "react";
 
 interface CartItemProps {
@@ -40,7 +41,7 @@ const CartItem: FC<CartItemProps> = ({ item }) => {
   return (
     <div className="flex items-center justify-between py-4 border-b-1 border-gray-300">
       <div className="flex items-center gap-3 sm:gap-4">
-        <img src={image} alt={name} className="w-[80px]  md:w-[100px] h-[60px] md:h-[70px] rounded-md " />
+        <Image width={150} height={100} src={image} alt={name} className="w-[80px]  md:w-[100px] h-[60px] md:h-[70px] rounded-md " />
         <div>
           <h3 className="font-semibold max-sm:text-sm ">{name}</h3>
           <p className="text-gray-600">&#2547;{price.toFixed(2)}</p>

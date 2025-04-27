@@ -1,5 +1,7 @@
 import { getProductById } from "@/api/products.api";
 import getProductImage from "@/lib/getProductImage";
+import { IProduct } from "@/types/product.type";
+import Image from "next/image";
 import AddToCartAction from "./_components/AddToCartAction";
 
 const SingleProductPage = async ({
@@ -8,9 +10,9 @@ const SingleProductPage = async ({
   params: Promise<{ id: string }>;
 }) => {
   const { id } = await params;
-  const { data } = await getProductById(parseInt(id));
+  const { data } = (await getProductById(parseInt(id))) || {};
   const {
-    name,
+    name = "",
     short_desc,
     image,
     price = 0,
@@ -24,7 +26,9 @@ const SingleProductPage = async ({
     <div className="lg:container mx-auto py-10 max-md:px-3">
       <div className="flex flex-col md:flex-row md:gap-7 xl:gap-10 items-center justify-between">
         <div className="w-full lg:w-2/5">
-          <img
+          <Image
+            width={1000}
+            height={800}
             src={pdImg}
             alt={name}
             className="w-full h-[270px] sm:h-[350px] md:h-[400px] lg:h-[450px] rounded-lg object-cover"
@@ -48,7 +52,7 @@ const SingleProductPage = async ({
           </p>
           <p className="mt-4 text-indigo-700 font-medium"> {stock} in stock </p>
           {/* add to cart */}
-          <AddToCartAction product={data} />
+          <AddToCartAction product={data as IProduct} />
         </div>
       </div>
     </div>

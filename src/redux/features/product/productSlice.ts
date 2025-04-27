@@ -5,7 +5,7 @@ interface IInitProductState {
 }
 
 interface IAction {
-  payload: any;
+  payload: number;
   type: string;
 }
 

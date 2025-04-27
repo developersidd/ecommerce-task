@@ -17,10 +17,10 @@ const Footer = () => {
           <h2 className="text-2xl font-bold mb-3">ABMart </h2>
           <p>
             {" "}
-            AB's Mart is a vibrant and trendy e-commerce destination that caters
+            AB&apos;s Mart is a vibrant and trendy e-commerce destination that caters
             to the modern shopper seeking convenience, quality, and style. With
-            a name that exudes personality and individuality, AB's Mart offers
-            an extensive range of products that will satisfy every customer's
+            a name that exudes personality and individuality, AB&apos;s Mart offers
+            an extensive range of products that will satisfy every customer&apos;s
             needs and desires.
           </p>
           <ul className="flex items-center max-md:justify-center  gap-4 pt-6">
