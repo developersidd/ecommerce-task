@@ -4,7 +4,6 @@ import ProductsSection from "./_components/ProductsSection";
 
 const Home = async () => {
   const { data, error } = await getProducts();
-  console.log(" error:", error)
   return (
     <main>
       <BannerSlider />

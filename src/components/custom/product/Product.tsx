@@ -8,7 +8,6 @@ type ProductProps = {
   product: IProduct;
 };
 const Product = ({ product }: ProductProps) => {
-  console.log(" product:", product);
   const {
     name,
     discount_amount,

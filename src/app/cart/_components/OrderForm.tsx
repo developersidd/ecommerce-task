@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
 import { selectCart } from "@/redux/features/cart/cartSelector";
 import { clearCartProducts } from "@/redux/features/cart/cartSlice";
@@ -60,14 +61,12 @@ const OrderForm = ({ ref, calcultions }: OrderFormProps) => {
         "https://admin.refabry.com/api/public/order/create",
         { ...orderData }
       );
-      console.log(" res:", res);
       if (res.status === 200) {
         toast.success("Order placed successfully!");
         dispatch(clearCartProducts());
         router.push("/");
       }
     } catch (e: unknown) {
-      console.log(" e:", e);
       toast.error("There was an error occurred!");
     }
   };
