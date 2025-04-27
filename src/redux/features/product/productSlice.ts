@@ -1,29 +1,29 @@
+import { IWishlistItem } from "@/types/product.type";
 import { createSlice } from "@reduxjs/toolkit";
 
 interface IInitProductState {
-  WishlistProductsId: Array<number>;
+  wishlistProducts: Array<IWishlistItem>;
 }
 
-interface IAction {
-  payload: number;
+interface IAction<T> {
+  payload: T;
   type: string;
 }
 
 const initialState: IInitProductState = {
-  WishlistProductsId: [],
+  wishlistProducts: [],
 };
 
 const productSlice = createSlice({
   name: "product",
   initialState,
   reducers: {
-    addToWishlist(state: IInitProductState, action: IAction) {
-      state.WishlistProductsId.push(action.payload);
+    addToWishlist(state: IInitProductState, action: IAction<IWishlistItem>) {
+      state.wishlistProducts.push(action.payload);
     },
-    removeFromWishlist(state: IInitProductState, action: IAction) {
-      state.WishlistProductsId.splice(
-        state.WishlistProductsId.indexOf(action.payload),
-        1
+    removeFromWishlist(state: IInitProductState, action: IAction<number>) {
+      state.wishlistProducts = state.wishlistProducts.filter(
+        (item) => item.id !== action.payload
       );
     },
   },

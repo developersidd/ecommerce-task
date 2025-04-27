@@ -1,6 +1,7 @@
 import getProductImage from "@/lib/getProductImage";
 import { IProduct } from "@/types/product.type";
 import Image from "next/image";
+import Link from "next/link";
 import ProductActions from "./ProductActions";
 
 type ProductProps = {
@@ -27,7 +28,9 @@ const Product = ({ product }: ProductProps) => {
       />
       <div className="p-4">
         <p className="text-gray-500 font-semibold">{categoryName}</p>
-        <h2 className="text-xl font-semibold">{name}</h2>
+        <Link href={`/products/${product.id}`}>
+          <h2 className="text-xl font-semibold">{name}</h2>
+        </Link>
         <p className="text-gray-800 mt-2">
           <span className="font-medium text-indigo-600 opacity-60 line-through mr-1">
             &#2547;

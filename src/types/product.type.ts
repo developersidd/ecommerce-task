@@ -18,4 +18,14 @@ interface IProduct {
   updated_at: string;
 }
 
-export type { IProduct };
+interface IWishlistItem {
+  id: number;
+  imageUrl: string;
+  name: string;
+  category: string;
+  price: number;
+  discount_amount: string;
+  stock: number; 
+}
+
+export type { IProduct, IWishlistItem };

@@ -1,11 +1,11 @@
 import Navbar from "@/components/core/Navbar";
 import CartSidebar from "@/components/custom/cart-sidebar/CartSidebar";
+import Footer from "@/components/custom/Footer/Footer";
 import ReduxProviders from "@/redux/app/ReduxProvider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "sonner";
 import "./globals.css";
-import Footer from "@/components/custom/Footer/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
+        
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Toaster richColors position="bottom-left" />

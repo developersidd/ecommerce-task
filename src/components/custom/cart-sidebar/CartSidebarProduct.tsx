@@ -38,8 +38,9 @@ const CartSidebarProduct = ({ product }: CartSidebarProductProps) => {
           <div className="flex">
             <button
               onClick={(e) => {
-                dispatch(removeProductFromCart(id));
+                e.preventDefault();
                 e.stopPropagation();
+                dispatch(removeProductFromCart(id));
               }}
               type="button"
               className="cursor-pointer font-medium text-indigo-600 hover:text-indigo-500"

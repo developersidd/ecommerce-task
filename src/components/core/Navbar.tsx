@@ -10,7 +10,7 @@ const Navbar = () => {
   const dispatch = useAppDispatch();
 
   const { cartProducts } = useAppSelector(selectCart);
-  const { WishlistProductsId } = useAppSelector(selectProduct);
+  const { wishlistProducts } = useAppSelector(selectProduct);
 
   return (
     <div className="border border-gray-200">
@@ -25,10 +25,7 @@ const Navbar = () => {
         </div>
         <div className="flex-1">
           <ul className="flex text-lg font-medium items-center justify-end">
-            <Link
-              href="/shop"
-              className={` hidden md:block mr-2 md:mr-5 text-base md:text-lg`}
-            >
+            <Link href="/shop" className={` mr-2 md:mr-5 text-base md:text-lg`}>
               Shop{" "}
             </Link>
 
@@ -51,7 +48,7 @@ const Navbar = () => {
             <Link href="/wishlist" className={` relative  mr-5 md:mr-0 `}>
               <Heart className="h-6 w-6" />
               <span className="bg-indigo-600 text-gray-200 w-5 h-5 flex items-center justify-center rounded-full text-xs absolute -right-3 bottom-3 font-bold">
-                {WishlistProductsId.length}
+                {wishlistProducts.length}
               </span>
             </Link>
           </ul>

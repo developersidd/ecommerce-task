@@ -23,7 +23,7 @@ const SingleProductPage = async ({
   } = data || {};
   const pdImg = getProductImage(image as string);
   return (
-    <div className="lg:container mx-auto py-10 max-md:px-3">
+    <div className="lg:container mx-auto py-10 max-md:px-5">
       <div className="flex flex-col md:flex-row md:gap-7 xl:gap-10 items-center justify-between">
         <div className="w-full lg:w-2/5">
           <Image

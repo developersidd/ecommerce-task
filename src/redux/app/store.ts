@@ -18,7 +18,6 @@ const persistConfig = {
   key: "root",
   storage: storage,
   blacklist: ['api'],
-  whitelist: ["cart"],
 };
 
 export const rootReducers = combineReducers({

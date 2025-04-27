@@ -19,14 +19,24 @@ type ProductActionsProps = {
 const ProductActions = ({ product }: ProductActionsProps) => {
   const { id, name, image, price, stock, discount_amount, category } =
     product || {};
-  const { WishlistProductsId } = useAppSelector(selectProduct);
+  const { wishlistProducts } = useAppSelector(selectProduct);
 
   const dispatch = useAppDispatch();
-
+  const isInWishlist = wishlistProducts.find((item) => item.id === id);
   // handle add to Wishlist
   const handleWishlist = (id: number) => {
-    if (!WishlistProductsId.includes(id)) {
-      dispatch(addToWishlist(id));
+    if (!isInWishlist) {
+      dispatch(
+        addToWishlist({
+          id,
+          imageUrl: getProductImage(image as string),
+          name,
+          category: category?.name,
+          price,
+          discount_amount,
+           stock
+        })
+      );
     } else {
       dispatch(removeFromWishlist(id));
     }
@@ -50,7 +60,7 @@ const ProductActions = ({ product }: ProductActionsProps) => {
   };
 
   return (
-    <div className="group-hover:opacity-100 opacity-0  z-50 group-hover:top-[60%] transition-all duration-500 opacity- flex items-center justify-center absolute top-[80%] left-1/2">
+    <div className="group-hover:opacity-100 opacity-0  z-50 group-hover:top-[60%] transition-all duration-500  flex items-center justify-center absolute top-[80%] left-1/2">
       <ul className="flex items-center gap-4 absolute inset-y-0  m-auto ">
         <li>
           <button
@@ -88,7 +98,7 @@ const ProductActions = ({ product }: ProductActionsProps) => {
             onClick={() => handleWishlist(id)}
             className="transition hover:scale-110 h-10 w-10 shadow-xl  rounded-full flex items-center justify-center bg-white"
           >
-            {WishlistProductsId.includes(id) ? (
+            {isInWishlist ? (
               <svg
                 stroke="currentColor"
                 fill="currentColor"

@@ -1,4 +1,3 @@
-"use client";
 
 type OrderSummaryProps = {
   onPlaceOrder: (e: React.FormEvent) => void;
@@ -33,9 +32,10 @@ const OrderSummary = ({ onPlaceOrder, calcultions }: OrderSummaryProps) => {
         <span className="font-semibold">&#2547;{totalAmount}</span>
       </div>
       <button
+      disabled={totalPrice === 0}
         onClick={onPlaceOrder}
         type="submit"
-        className="w-full mt-6 bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-semibold"
+        className="disabled:cursor-not-allowed w-full mt-6 bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-semibold"
       >
         Place Order
       </button>

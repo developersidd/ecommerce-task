@@ -20,8 +20,8 @@ type OrderFormProps = {
 };
 
 const orderFormSchema = z.object({
-  name: z.string().min(5, { message: "Name is required" }),
-  address: z.string().min(10, { message: "Address is required" }),
+  name: z.string().min(3, { message: "Name is required" }),
+  address: z.string().min(10, { message: "Address must be greater than 10 characters" }),
   phone: z.string().min(11, { message: "Phone number must be 11 digits" }),
 });
 
