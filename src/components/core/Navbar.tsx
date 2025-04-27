@@ -9,8 +9,8 @@ import Link from "next/link";
 const Navbar = () => {
   const dispatch = useAppDispatch();
 
-  const { bookedProducts } = useAppSelector(selectCart);
-  const { whichListProductsId } = useAppSelector(selectProduct);
+  const { cartProducts } = useAppSelector(selectCart);
+  const { WishlistProductsId } = useAppSelector(selectProduct);
 
   return (
     <div className="border border-gray-200">
@@ -44,14 +44,14 @@ const Navbar = () => {
             >
               <ShoppingCart className="h-6 w-6" />
               <span className="bg-indigo-600 text-gray-200 w-5 h-5 flex items-center justify-center rounded-full text-xs absolute -right-3 bottom-3 font-bold">
-                {bookedProducts.length}
+                {cartProducts.length}
               </span>
             </button>
 
-            <Link href="/whichlist" className={` relative  mr-5 md:mr-0 `}>
+            <Link href="/Wishlist" className={` relative  mr-5 md:mr-0 `}>
               <Heart className="h-6 w-6" />
               <span className="bg-indigo-600 text-gray-200 w-5 h-5 flex items-center justify-center rounded-full text-xs absolute -right-3 bottom-3 font-bold">
-                {whichListProductsId.length}
+                {WishlistProductsId.length}
               </span>
             </Link>
           </ul>

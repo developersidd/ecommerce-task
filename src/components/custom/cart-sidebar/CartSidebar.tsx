@@ -10,8 +10,8 @@ import CartSidebarProducts from "./CartSidebarProducts";
 
 const CartSidebar = () => {
   const dispatch = useAppDispatch();
-  const { isSidebarOpen, bookedProducts } = useAppSelector(selectCart);
-  const totalPrice = bookedProducts.reduce(
+  const { isSidebarOpen, cartProducts } = useAppSelector(selectCart);
+  const totalPrice = cartProducts.reduce(
     (acc, product) => acc + product.price * product.quantity,
     0
   );
@@ -84,7 +84,7 @@ const CartSidebar = () => {
                 <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                   <div className="flex justify-between text-base font-medium text-gray-900">
                     <p>Subtotal</p>
-                    <p>${totalPrice}</p>
+                    <p>&#2547;{totalPrice}</p>
                   </div>
                   <p className="mt-0.5 text-sm text-gray-500">
                     Shipping and taxes calculated at checkout.

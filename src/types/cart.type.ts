@@ -1,4 +1,4 @@
-interface IBookedProduct {
+interface ICartProduct {
   id: number;
   name: string;
   image: string;
@@ -9,4 +9,4 @@ interface IBookedProduct {
   category: string;
 }
 
-export type { IBookedProduct };
+export type { ICartProduct };

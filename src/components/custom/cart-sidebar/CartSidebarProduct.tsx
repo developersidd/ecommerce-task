@@ -22,7 +22,8 @@ const CartSidebarProduct = ({ product }: CartSidebarProductProps) => {
         <div>
           <div className="flex justify-between text-base font-medium text-gray-900">
             <h3>{name}</h3>
-            <p className="ml-4">${price}</p>
+            <p className="ml-4">&#2547;
+            {price}</p>
           </div>
           <p className="mt-1 text-sm text-gray-500">{category}</p>
         </div>

@@ -42,10 +42,12 @@ const SingleProductPage = async ({
           </p>
           <p className="text-gray-700 mt-4 text-[15px]">{short_desc}</p>
           <p className="text-sm mt-2 font-medium text-indigo-600 opacity-60 line-through mr-1">
-            ${price}
+          &#2547;
+          {price}
           </p>
           <p className="text-xl font-medium text-indigo-600 ">
-            ${price - parseInt(discount_amount)}
+          &#2547;
+          {price - parseInt(discount_amount)}
           </p>
           <p className="mt-4 text-indigo-700 font-medium"> {stock} in stock </p>
           {/* add to cart */}

@@ -11,7 +11,6 @@ import data from "../../data/Slider";
 import "./Slider.css";
 
 const Slider = () => {
-  //  const isMobile = useMediaQuery({ maxWidth: 767 });
   return (
     <div
       style={{

@@ -1,13 +1,13 @@
-import { IBookedProduct } from "@/types/cart.type";
+import { ICartProduct } from "@/types/cart.type";
 import { createSlice } from "@reduxjs/toolkit";
 
 interface IInitCartState {
-  bookedProducts: IBookedProduct[];
+  cartProducts: ICartProduct[];
   isSidebarOpen: boolean;
 }
 
 const initialState: IInitCartState = {
-  bookedProducts: [],
+  cartProducts: [],
   isSidebarOpen: false,
 };
 
@@ -27,9 +27,7 @@ const cartSlice = createSlice({
         type: string;
       }
     ) => {
-      const clickedPd = state.bookedProducts.find(
-        (pd) => pd.id === payload?.id
-      );
+      const clickedPd = state.cartProducts.find((pd) => pd.id === payload?.id);
       if (clickedPd) {
         if (payload.method === "inc") {
           clickedPd.quantity += payload.quantity;
@@ -38,39 +36,38 @@ const cartSlice = createSlice({
         }
       }
     },
-    editProductQuantity: (
+    addToCart: (
       state: IInitCartState,
       {
         payload,
       }: {
-        payload: any;
+        payload: ICartProduct;
         type: string;
       }
     ) => {
-      const clickedPd = state.bookedProducts.find(
-        (pd) => pd.id === payload?.id
-      );
+      const clickedPd = state.cartProducts.find((pd) => pd.id === payload?.id);
+      if (!clickedPd) {
+        state.cartProducts.push(payload);
+      }else
       if (clickedPd) {
         clickedPd.quantity += payload.quantity;
-      } else {
-        state.bookedProducts.push(payload);
       }
     },
     removeProductFromCart: (state, action) => {
-      const productIndexToRemove = state.bookedProducts.findIndex(
+      const productIndexToRemove = state.cartProducts.findIndex(
         (p) => p.id === action.payload
       );
-      state.bookedProducts.splice(productIndexToRemove, 1);
+      state.cartProducts.splice(productIndexToRemove, 1);
     },
 
     clearCartProducts: (state) => {
-      state.bookedProducts = [];
+      state.cartProducts = [];
     },
   },
 });
 
 export const {
-  editProductQuantity,
+  addToCart,
   clearCartProducts,
   removeProductFromCart,
   editCartProductQuantity,

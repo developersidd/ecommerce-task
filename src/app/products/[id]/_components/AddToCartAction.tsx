@@ -2,7 +2,10 @@
 import getProductImage from "@/lib/getProductImage";
 import { useAppDispatch } from "@/redux/app/hooks";
 import { selectCart } from "@/redux/features/cart/cartSelector";
-import { editProductQuantity } from "@/redux/features/cart/cartSlice";
+import {
+  addToCart,
+  editCartProductQuantity,
+} from "@/redux/features/cart/cartSlice";
 import { IProduct } from "@/types/product.type";
 import { MinusIcon, PlusIcon, ShoppingCartIcon } from "lucide-react";
 import { useState } from "react";
@@ -10,38 +13,35 @@ import { useSelector } from "react-redux";
 import { toast } from "sonner";
 
 type AddToCartActionProps = {
-  product: IProduct | undefined;
+  product: IProduct;
 };
 
 const AddToCartAction = ({ product }: AddToCartActionProps) => {
-  const {
-    id,
-    name,
-    image,
-    price = 0,
-    stock = 0,
-    discount_amount = "0",
-    category,
-  } = product || {};
+  const { id, name, image, price, stock, discount_amount, category } =
+    product || {};
 
   const [quantity, setQuantity] = useState(1);
-  const { bookedProducts = [] } = useSelector(selectCart);
+  const { cartProducts = [] } = useSelector(selectCart);
   const dispatch = useAppDispatch();
-  const priceAfterDiscount = price - parseInt(discount_amount);
 
   const handleCartProduct = () => {
-    const cartProduct = bookedProducts.find((p) => p.id === id);
+    const cartProduct = cartProducts.find((p) => p.id === id);
     if (cartProduct?.id) {
-      dispatch(editProductQuantity({ id, quantity: quantity }));
+      dispatch(
+        editCartProductQuantity({ id, quantity: quantity, method: "inc" })
+      );
+      toast.success(`${name} quantity updated in cart`);
     } else {
       dispatch(
-        editProductQuantity({
+        addToCart({
           id,
           quantity,
           image: getProductImage(image as string),
-          price: priceAfterDiscount,
+          price,
           name,
           category: category?.name,
+          stock,
+          discount_amount,
         })
       );
     }
