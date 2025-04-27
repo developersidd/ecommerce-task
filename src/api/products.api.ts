@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { IProduct } from "@/types/product.type";
 import api from ".";
 
@@ -9,7 +10,7 @@ const getProducts = async () => {
     };
   } catch (error: unknown) {
     return {
-      error: error || "Something went wrong",
+      error: "Something went wrong",
     };
   }
 };
@@ -28,7 +29,7 @@ const getProductById = async (id: number) => {
     return { data: product };
   } catch (error: unknown) {
     return {
-      error: error || "Something went wrong",
+      error: "Something went wrong",
     };
   }
 };
