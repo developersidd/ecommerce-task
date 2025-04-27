@@ -9,6 +9,7 @@ const getProducts = async () => {
       data: response.data?.data,
     };
   } catch (error: unknown) {
+    console.log("all error:", error)
     return {
       error: "Something went wrong",
     };
@@ -20,6 +21,7 @@ const getProductById = async (id: number) => {
   try {
     const { data, error } = await getProducts();
     console.log(" data:", data);
+    console.log("all error:", error)
     if (error) {
       return { error };
     }
@@ -28,6 +30,7 @@ const getProductById = async (id: number) => {
     );
     return { data: product };
   } catch (error: unknown) {
+    console.log("id error:", error)
     return {
       error: "Something went wrong",
     };
